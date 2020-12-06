@@ -32,7 +32,7 @@ It is a semi-column separated text file, each line being a participant. The firs
 Example:
 
 ```
-Robin Leman;McGill University;robin.leman@mail.mcgill.c
+Robin Leman;McGill University;robin.leman@mail.mcgill.ca
 ```
 
 - The "email_template.txt" file
@@ -40,7 +40,9 @@ Robin Leman;McGill University;robin.leman@mail.mcgill.c
 It is the content of the email that will be automatically be sent. You can use the variables here-after to customize the email for each participant:
 
 ```$(PERSON_NAME)``` is the name of the email receiver.
+
 ```$(PERSON_ASSIGNEE)``` is the name of the match of the email receiver.
+
 ```$(PERSON_ADDRESS)``` is the address of the match of the email receiver.
 
 Please avoid using non latin characters (accents, special characters, etc..) or modify the code to support it.
