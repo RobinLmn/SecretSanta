@@ -1,0 +1,5 @@
+email: example@gmail.com
+password: password
+forbidden pairs: [["example1", "example2"], ["exampleA", "exampleB"]]
+subject: Test
+server: smtp.gmail.com
