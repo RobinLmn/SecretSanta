@@ -16,8 +16,32 @@ The code is supposed to be as modular as you want, so feel free to fork the proj
 You will need three files:
 
 - The "info.txt" file
+
+```
+email:
+password:
+forbidden pairs: 
+subject:
+server:
+```
+
 - The "participants_list.txt" file
+
+It is a semi-column separated text file, each line being a participant. The first index is the name of the participant, the second one is his postal address (where to send the gift) and the third one is his email.
+
+Example:
+
+```
+Robin Leman;McGill University;robin.leman@mail.mcgill.c
+```
+
 - The "email_template.txt" file
+
+It is the content of the email that will be automatically be sent. You can use the variables here-after to customize the email for each participant:
+
+```$(PERSON_NAME)``` is the name of the email receiver.
+```$(PERSON_ASSIGNEE)``` is the name of the match of the email receiver.
+```$(PERSON_ADDRESS)``` is the address of the match of the email receiver.
 
 Please avoid using non latin characters (accents, special characters, etc..) or modify the code to support it.
 
