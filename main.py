@@ -1,5 +1,4 @@
 import smtplib
-import csv
 import participants
 
 from string import Template
@@ -8,26 +7,20 @@ from email.mime.text import MIMEText
 
 class Info:
     def __init__(self, filename):
-        in_file = open(filename,'r', encoding = 'latin-1')
-        self.email = in_file.readline().split("email: ", 1)[1]
-        self.psswd = in_file.readline().split("password: ", 1)[1]
-        self.forbiddenPairs = eval( (in_file.readline().split("forbidden pairs: ", 1)[1]) )
-        self.subject = in_file.readline().split("subject: ", 1)[1]
-        self.server = in_file.readline().split("server: ", 1)[1]
+        f = open(filename,'r', encoding = 'latin-1')
+        self.email =    f.readline().split("email: ", 1)[1]
+        self.psswd =    f.readline().split("password: ", 1)[1]
+        self.subject =  f.readline().split("subject: ", 1)[1]
+        self.server =   f.readline().split("server: ", 1)[1]
 
 def get_contacts(filename):
     participants_list = []
-    in_file = open(filename,'r', encoding = 'latin-1')
-
-    line_to_process = in_file.readline()
+    f = open(filename,'r')
     
-    while len(line_to_process) != 0:
-        
-        elements = line_to_process.split(';')
-        p = participants.Participant(elements[0], elements[2], elements[1])
-
+    for line in f:
+        args = line.split(';')
+        p = participants.Participant(args[0], args[1], args[2::])
         participants_list.append(p)
-        line_to_process = in_file.readline()
 
     return participants_list
 
@@ -45,13 +38,12 @@ def main():
     s.starttls()
     s.login(info.email, info.psswd)
  
-    participants.match(participants_list, info.forbiddenPairs)
+    participants.match(participants_list)
 
     for p in participants_list:
         msg = MIMEMultipart()
         
         message = message_template.substitute(PERSON_NAME=p.name.title(),\
-                                              PERSON_ADDRESS=p.assignee.address.title(),\
                                               PERSON_ASSIGNEE=p.assignee.name)
                                 
         msg['From']= info.email

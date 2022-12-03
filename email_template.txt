@@ -1,5 +1,2 @@
 In this email, ${PERSON_NAME} will be replaced by the receiver name.
-
 ${PERSON_ASSIGNEE} will be replaced by the name of the match of the receiver.
-
-${PERSON_ADDRESS} will be replaced by the address of the match of the receiver.
