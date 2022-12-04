@@ -1,0 +1,15 @@
+{
+    "participants": 
+    [
+        {
+            "name" : "ParticipantA",
+            "email" : "participant.a@gmail.com",
+            "forbidden_matches" : []
+        },
+        {
+            "name" : "ParticipantB",
+            "email" : "participant.b@gmail.com",
+            "forbidden_matches" : ["ParticipantA"]
+        }
+    ]
+}

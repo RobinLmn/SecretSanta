@@ -1,4 +1,0 @@
-email: example@gmail.com
-password: password
-subject: Test
-server: smtp.gmail.com
